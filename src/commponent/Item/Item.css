@@ -1,7 +1,14 @@
-.itembox{
-    display: block;
-    margin-top:10px  ;
+.item-box{
+    display: flex;
+    margin:10px auto 0;
     border:1px solid black;
-    height: 22px;
+   
     width: 200px;
+    justify-content: space-between;
+}
+button{
+    margin:1px;
+}
+.text-title{
+    margin-left:2px;
 }

@@ -1,35 +1,55 @@
-import {useState} from 'react' 
-import './App.css';
-import Item from './commponent/Item/Item'
+import { useState } from "react"
+import "./App.css"
+import Item from "./commponent/Item/Item"
 
 function App() {
-const [todos,setTodos]= useState([])
-const [input,setInput]= useState("")
+  console.log("run APP");
+  const [todos, setTodos] = useState([
+    { task: "lern japan", id: 1620674588702, checked: true },
+    { task: "lern english", id: 1620674588703, checked: true },
+    { task: "lern polisz", id: 1620674588704, checked: false },
+  ])
+  const [input, setInput] = useState("")
 
-const handleChange =(e)=>{
-  setInput(e.target.value)
-  console.log(e.target.value)
-}
+  const handleDel = (id) => {
+    const newtodos = todos.filter((el) => el.id !== id)
+    setTodos(newtodos)
+  }
 
-const handleClick =()=>{
-  setTodos([...todos,input])
-  console.log(todos)
-}
+  const handleComplete = (id)=>{
+    const newtodos =todos.map((item)=>{return(item.id === id?{...item,checked:!item.checked}:item)})
+    setTodos(newtodos)
 
-const listItems = todos.map((item,key) =>(<Item  key={item+key} task={item}/>))
+  }
+
+  const handleChange = (e) => {
+    setInput(e.target.value)
+  }
+
+  const handleClick = () => {
+    if (input.length > 0) {
+      setTodos([...todos, { task: input, id: Date.now() }])
+    }
+  }
+
+  const listItems = todos.map((item) => (
+    <Item key={item.id} handleComplete={handleComplete} handleDel={handleDel} {...item} />
+  ))
   return (
-    <div className ="box">
+    <div className="box">
       <h1>Todo list</h1>
-      <input type="text" onChange={handleChange} placeholder="input task" value={input} /> 
-      <button onClick={handleClick}  type="button" >ok</button>
-    {listItems}
+      <input
+        type="text"
+        onChange={handleChange}
+        placeholder="input task"
+        value={input}
+      />
+      <button onClick={handleClick} type="button">
+        ok
+      </button>
+      {listItems}
     </div>
-  );
+  )
 }
-
-export default App;
-
-//  const numbers = [1, 2, 3, 4, 5];
-// const listItems = numbers.map((number) =>
-//   <li>{number}</li>
-// );
+// const del =todos.filter((el)=>{el !== "lern japan"})
+export default App

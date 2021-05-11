@@ -9,13 +9,3 @@ body {
 .brd{
   border: 1px solid blue;
 }
-.box{
-  display: block;
-  border: 1px solid black;
-  text-align: center;
-  margin: auto;
-  height: 400px;
-  width: 250px;
-  /* background-color: lightgrey; */
-
-}
