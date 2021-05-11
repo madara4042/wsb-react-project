@@ -43,7 +43,7 @@ function App() {
       <input
         type="text"
         onChange={handleChange}
-        placeholder="input task"
+        placeholder="creat task"
         value={input}
       />
       <button onClick={handleClick} type="button">
