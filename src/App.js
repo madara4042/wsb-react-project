@@ -1,6 +1,8 @@
 import { useState } from "react"
 import "./App.css"
 import Item from "./commponent/Item/Item"
+import plus from './img/plus.svg'
+
 
 function App() {
   console.log("run APP");
@@ -36,7 +38,7 @@ function App() {
     <Item key={item.id} handleComplete={handleComplete} handleDel={handleDel} {...item} />
   ))
   return (
-    <div className="box">
+    <div className="box ">
       <h1>Todo list</h1>
       <input
         type="text"
@@ -45,7 +47,7 @@ function App() {
         value={input}
       />
       <button onClick={handleClick} type="button">
-        ok
+     <img width="10"  src={plus}/>
       </button>
       {listItems}
     </div>

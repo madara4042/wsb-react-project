@@ -1,7 +1,11 @@
 import "./Item.css"
+import select from '../../img/select.svg'
+import del from '../../img/x-mark.svg'
+
+
 const Item = (props) => { 
   const style = props.checked
-    ? { color:"grey" ,textDecoration: "line-through" ,fontStyle:"italic"}
+    ? { color:"#FDFDFC" ,textDecoration: "line-through" ,fontStyle:"italic"}
     : null
   return (
     <div className="item-box">
@@ -14,9 +18,11 @@ const Item = (props) => {
             props.handleDel(props.id)
           }}
         >
-          del
+            <img width="12" height="12" src={del}/>
         </button>
-        <button onClick={()=>{props.handleComplete(props.id)}} >ok</button>
+        <button onClick={()=>{props.handleComplete(props.id)}} >
+          <img width="12" height="12" src={select}/>
+           </button>
       </div>
     </div>
   )
